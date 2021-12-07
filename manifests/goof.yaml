@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: goof
-          image: <<QUAY_ID>>/goof:latest #Edit with your Quay ID
+          image: quay.io/odrodrig_us/goof:latest #Edit with your Quay ID
           imagePullPolicy: Always
           resources:
             requests:
@@ -28,25 +28,25 @@ spec:
           env:
             - name: DOCKER
               value: "1"
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: goof-mongo
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: goof
-      tier: backend
-  template:
-    metadata:
-      labels:
-        app: goof
-        tier: backend
-    spec:
-      containers:
-        - name: goof-mongo
-          image: mongo
-          ports:
-            - containerPort: 27017
+# ---
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: goof-mongo
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: goof
+#       tier: backend
+#   template:
+#     metadata:
+#       labels:
+#         app: goof
+#         tier: backend
+#     spec:
+#       containers:
+#         - name: goof-mongo
+#           image: mongo
+#           ports:
+#             - containerPort: 27017
